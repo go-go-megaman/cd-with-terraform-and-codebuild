@@ -1,0 +1,10 @@
+version: 0.2
+
+phases:
+  build:
+    commands:
+      - make run-shellcheck
+      - make run-hadolint
+      - make terraform-image
+      - make check-terraform-format
+      - make run-terraform

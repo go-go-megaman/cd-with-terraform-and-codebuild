@@ -1,0 +1,15 @@
+{
+  "Rules": [
+    {
+      "ID": "archive-rule",
+      "Filter": {},
+      "Status": "Enabled",
+      "NoncurrentVersionTransitions": [
+        {
+          "NoncurrentDays": 365,
+          "StorageClass": "GLACIER"
+        }
+      ]
+    }
+  ]
+}
