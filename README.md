@@ -43,11 +43,11 @@ terraform apply -var-file=sandbox.tfvars
 
 | ブランチ    | 環境                   | 実行されるコマンド       |
 |---------|----------------------|-----------------|
-| develop | staging              | terraform apply |
-| feature | staging              | terraform plan  |
-| main    | production           | terraform apply |
-| release | production / staging | terraform plan  |
-| hotfix  | production / staging | terraform plan  |
+| develop | Staging              | terraform apply |
+| feature | Staging              | terraform plan  |
+| main    | Production           | terraform apply |
+| release | Production / Staging | terraform plan  |
+| hotfix  | Production / Staging | terraform plan  |
 
 ### AWS CLIによる起動方法
 
