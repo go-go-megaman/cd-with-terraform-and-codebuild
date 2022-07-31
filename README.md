@@ -35,6 +35,19 @@ terraform plan -var-file=sandbox.tfvars
 terraform apply -var-file=sandbox.tfvars
 ```
 
+## Production、もしくはStagingの初回構築
+
+- Sandboxの作成と実行するコマンドは変わらない。
+- プレースホルダーへ`production`、もしくは`staging`を入力した後、コマンドを実行する。
+
+```shell
+export TERRAFORM_WORKSPACE={TYPE_WORKSPACE_NAME}
+./terraform/bin/entrypoint.sh init
+cd terraform
+terraform plan -var-file={TYPE_WORKSPACE_NAME}.tfvars
+terraform apply -var-file={TYPE_WORKSPACE_NAME}.tfvars
+```
+
 ## CodeBuildプロジェクト
 
 ### Webhookによる起動
