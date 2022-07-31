@@ -35,7 +35,21 @@ terraform plan
 terraform apply
 ```
 
-## CodeBuildプロジェクトの起動
+## CodeBuildプロジェクト
+
+### Webhookによる起動
+
+- 対応するGitブランチがリモートリポジトリへPushされることにより、CodeBuildプロジェクトが起動する。
+
+| ブランチ    | 環境                   | 実行されるコマンド       |
+|---------|----------------------|-----------------|
+| develop | staging              | terraform apply |
+| feature | staging              | terraform plan  |
+| main    | production           | terraform apply |
+| release | production / staging | terraform plan  |
+| hotfix  | production / staging | terraform plan  |
+
+### AWS CLIによる起動方法
 
 - コンソール、もしくはAWS CLIから作成したCodeBuildプロジェクトを起動することができる。
 
