@@ -34,4 +34,10 @@ resource "aws_codebuild_project" "terraform_codebuild_project" {
     location  = "https://github.com/go-go-megaman/cd-with-terraform-and-codebuild.git"
     buildspec = "deployment/buildspec.yaml"
   }
+
+  vpc_config {
+    security_group_ids = var.vpc_config.security_group_ids
+    subnets            = var.vpc_config.subnet_ids
+    vpc_id             = var.vpc_config.vpc_id
+  }
 }

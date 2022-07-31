@@ -36,6 +36,7 @@ No modules.
 | <a name="input_pattern_of_branch_name"></a> [pattern\_of\_branch\_name](#input\_pattern\_of\_branch\_name) | To specify the pattern of the branch name to start the CodeBuild project. | `string` | `null` | no |
 | <a name="input_project_name"></a> [project\_name](#input\_project\_name) | To specify the name of the CodeBuild project. | `string` | n/a | yes |
 | <a name="input_terraform_should_apply"></a> [terraform\_should\_apply](#input\_terraform\_should\_apply) | To specify whether the CodeBuild project should execute 'terraform apply'. | `bool` | n/a | yes |
+| <a name="input_vpc_config"></a> [vpc\_config](#input\_vpc\_config) | To specify VPC configuration. | <pre>object({<br>    security_group_ids = list(string)<br>    subnet_ids         = list(string)<br>    vpc_id             = string<br>  })</pre> | n/a | yes |
 
 ## Outputs
 

@@ -16,6 +16,7 @@ No providers.
 |------|--------|---------|
 | <a name="module_applying_terraform_project"></a> [applying\_terraform\_project](#module\_applying\_terraform\_project) | ./modules/terraform_codebuild | n/a |
 | <a name="module_planning_terraform_project"></a> [planning\_terraform\_project](#module\_planning\_terraform\_project) | ./modules/terraform_codebuild | n/a |
+| <a name="module_vpc"></a> [vpc](#module\_vpc) | terraform-aws-modules/vpc/aws | 3.14.2 |
 
 ## Resources
 
