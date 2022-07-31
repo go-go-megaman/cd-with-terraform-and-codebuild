@@ -61,6 +61,18 @@ terraform_wrapper() {
   terraform -chdir="$terraform_dir" "$@" -no-color
 }
 
+fetch_tfvars_file_name() {
+  if [ "$TERRAFORM_WORKSPACE" != "production" ] && [ "$TERRAFORM_WORKSPACE" != "staging" ]; then
+    echo "sandbox.tfvars"
+    return
+  fi
+  echo "$TERRAFORM_WORKSPACE.tfvars"
+}
+
+terraform_with_tfvars() {
+  terraform_wrapper "$@" -var-file="$(fetch_tfvars_file_name)"
+}
+
 new_terraform_workspace() {
   if terraform_wrapper workspace list 2>&1 | grep "$TERRAFORM_WORKSPACE" >/dev/null; then
     echo "Terraform Workspace '$TERRAFORM_WORKSPACE' already exists."
@@ -85,9 +97,9 @@ run() {
   (
     lock_timeout_seconds="3600s"
     if $TERRAFORM_SHOULD_APPLY; then
-      terraform_wrapper apply -lock-timeout=$lock_timeout_seconds -auto-approve
+      terraform_with_tfvars apply -lock-timeout=$lock_timeout_seconds -auto-approve
     fi
-    terraform_wrapper plan -lock-timeout=$lock_timeout_seconds
+    terraform_with_tfvars plan -lock-timeout=$lock_timeout_seconds
   )
 }
 
