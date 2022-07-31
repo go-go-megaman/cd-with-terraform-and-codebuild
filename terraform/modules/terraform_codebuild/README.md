@@ -21,6 +21,7 @@ No modules.
 | Name | Type |
 |------|------|
 | [aws_codebuild_project.terraform_codebuild_project](https://registry.terraform.io/providers/hashicorp/aws/4.22.0/docs/resources/codebuild_project) | resource |
+| [aws_codebuild_webhook.example](https://registry.terraform.io/providers/hashicorp/aws/4.22.0/docs/resources/codebuild_webhook) | resource |
 | [aws_iam_policy.iam_editor](https://registry.terraform.io/providers/hashicorp/aws/4.22.0/docs/resources/iam_policy) | resource |
 | [aws_iam_role.code_build](https://registry.terraform.io/providers/hashicorp/aws/4.22.0/docs/resources/iam_role) | resource |
 | [aws_iam_role_policy_attachment.attaching_iam_editor_to_code_build](https://registry.terraform.io/providers/hashicorp/aws/4.22.0/docs/resources/iam_role_policy_attachment) | resource |
@@ -32,6 +33,7 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_pattern_of_branch_name"></a> [pattern\_of\_branch\_name](#input\_pattern\_of\_branch\_name) | To specify the pattern of the branch name to start the CodeBuild project. | `string` | `null` | no |
 | <a name="input_project_name"></a> [project\_name](#input\_project\_name) | To specify the name of the CodeBuild project. | `string` | n/a | yes |
 | <a name="input_terraform_should_apply"></a> [terraform\_should\_apply](#input\_terraform\_should\_apply) | To specify whether the CodeBuild project should execute 'terraform apply'. | `bool` | n/a | yes |
 
