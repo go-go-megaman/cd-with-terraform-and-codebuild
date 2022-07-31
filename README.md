@@ -12,7 +12,7 @@
 - WSL
     - ディストリービューションは`Ubuntu`を使用すること
 
-## 初回構築
+## Sandboxの初回構築
 
 - ワークスペース名の設定を行う。
 - デフォルトではユーザー名がワークスペース名として扱われる。
@@ -31,8 +31,8 @@ export TERRAFORM_WORKSPACE={TYPE_YOUR_OWN_WORKSPACE_NAME}
 
 ```shell
 cd terraform
-terraform plan
-terraform apply
+terraform plan -var-file=sandbox.tfvars
+terraform apply -var-file=sandbox.tfvars
 ```
 
 ## CodeBuildプロジェクト
