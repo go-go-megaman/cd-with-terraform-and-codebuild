@@ -31,9 +31,11 @@ resource "aws_codebuild_project" "terraform_codebuild_project" {
 
   source {
     type      = "GITHUB"
-    location  = "https://github.com/go-go-megaman/cd-with-terraform-and-codebuild.git"
+    location  = "https://github.com/murayama-molo/cd-with-terraform-and-codebuild"
     buildspec = "deployment/buildspec.yaml"
   }
+
+  source_version = "refs/heads/"
 
   vpc_config {
     security_group_ids = var.vpc_config.security_group_ids
