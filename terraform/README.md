@@ -8,7 +8,9 @@
 
 ## Providers
 
-No providers.
+| Name | Version |
+|------|---------|
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 4.22.0 |
 
 ## Modules
 
@@ -18,7 +20,12 @@ No providers.
 
 ## Resources
 
-No resources.
+| Name | Type |
+|------|------|
+| [aws_ecs_cluster.test_cluster](https://registry.terraform.io/providers/hashicorp/aws/4.22.0/docs/resources/ecs_cluster) | resource |
+| [aws_ecs_service.iis_service](https://registry.terraform.io/providers/hashicorp/aws/4.22.0/docs/resources/ecs_service) | resource |
+| [aws_ecs_task_definition.iis_task_definition](https://registry.terraform.io/providers/hashicorp/aws/4.22.0/docs/resources/ecs_task_definition) | resource |
+| [aws_security_group.tcp_security_group](https://registry.terraform.io/providers/hashicorp/aws/4.22.0/docs/resources/security_group) | resource |
 
 ## Inputs
 
