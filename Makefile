@@ -50,3 +50,6 @@ validate-terraform-code:
 		-v ${PWD}:/work \
 		-w /work \
 		${RUNNER_IMAGE} validate
+
+.PHONY: run-all-checks
+run-all-checks: run-shellcheck run-hadolint check-terraform-documents check-format-of-terraform-code validate-terraform-code
