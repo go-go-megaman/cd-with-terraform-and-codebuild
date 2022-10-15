@@ -34,3 +34,10 @@ run-hadolint:
 		-v ${PWD}:/work \
 		-w /work \
 		hadolint/hadolint:2.10.0 hadolint --no-color ./terraform/Dockerfile
+
+.PHONY: check-terraform-documents
+check-terraform-documents:
+	docker run --rm \
+		-v ${PWD}:/terraform-docs \
+		-u $(shell id -u) \
+		quay.io/terraform-docs/terraform-docs:0.16.0 markdown table --output-file README.md --output-check --recursive /terraform-docs/terraform

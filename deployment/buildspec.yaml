@@ -7,4 +7,5 @@ phases:
       - make run-hadolint
       - make terraform-image
       - make check-terraform-format
+      - make check-terraform-documents
       - make run-terraform
