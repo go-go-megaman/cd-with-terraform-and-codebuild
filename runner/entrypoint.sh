@@ -116,6 +116,9 @@ main() {
     terraform_wrapper fmt -check -recursive -diff
   elif [ "$1" = "validate" ]; then
     terraform_wrapper validate
+  else
+    echo "Please specify correct command."
+    exit 1
   fi
 }
 
