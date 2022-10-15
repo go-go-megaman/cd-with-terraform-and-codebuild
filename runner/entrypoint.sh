@@ -107,7 +107,6 @@ main() {
   if [ "$#" = 0 ]; then
     echo "Please specify any command."
     exit 1
-    return
   elif [ "$1" = "init" ]; then
     init
   elif [ "$1" = "run" ]; then
