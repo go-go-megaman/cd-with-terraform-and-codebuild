@@ -112,6 +112,8 @@ main() {
     run
   elif [ "$1" = "check-format" ]; then
     terraform_wrapper fmt -check -recursive -diff
+  elif [ "$1" = "validate" ]; then
+    terraform_wrapper validate
   fi
 }
 

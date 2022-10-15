@@ -8,4 +8,5 @@ phases:
       - make terraform-image
       - make check-terraform-format
       - make check-terraform-documents
+      - make validate-terraform-code
       - make run-terraform

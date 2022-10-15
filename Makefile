@@ -41,3 +41,7 @@ check-terraform-documents:
 		-v ${PWD}:/terraform-docs \
 		-u $(shell id -u) \
 		quay.io/terraform-docs/terraform-docs:0.16.0 markdown table --output-file README.md --output-check --recursive /terraform-docs/terraform
+
+.PHONY: validate-terraform-code
+validate-terraform-code:
+	docker run --rm ${TERRAFORM_IMAGE} validate
