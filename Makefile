@@ -6,8 +6,8 @@ runner-image:
 		-t ${RUNNER_IMAGE} \
 		./runner
 
-.PHONY: check-terraform-format
-check-terraform-format:
+.PHONY: check-format-of-terraform-code
+check-format-of-terraform-code:
 	docker run --rm \
 		-v ${PWD}:/work \
 		-w /work \

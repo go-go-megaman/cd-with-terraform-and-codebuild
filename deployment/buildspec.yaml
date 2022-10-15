@@ -6,7 +6,7 @@ phases:
       - make run-shellcheck
       - make run-hadolint
       - make terraform-image
-      - make check-terraform-format
+      - make check-format-of-terraform-code
       - make check-terraform-documents
       - make validate-terraform-code
       - make run-terraform
