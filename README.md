@@ -24,13 +24,13 @@ export TERRAFORM_WORKSPACE={TYPE_YOUR_OWN_WORKSPACE_NAME}
 - Terraformのバックエンドに必要なリソースの作成と初期化処理を行う。
 
 ```shell
-./terraform/bin/entrypoint.sh init
+cd terraform
+../runner/entrypoint.sh init
 ```
 
 - `plan`にて作成されるリソースを確認した後、`apply`を実行する。
 
 ```shell
-cd terraform
 terraform plan -var-file=sandbox.tfvars
 terraform apply -var-file=sandbox.tfvars
 ```
@@ -42,8 +42,8 @@ terraform apply -var-file=sandbox.tfvars
 
 ```shell
 export TERRAFORM_WORKSPACE={TYPE_WORKSPACE_NAME}
-./terraform/bin/entrypoint.sh init
 cd terraform
+../runner/entrypoint.sh init
 terraform plan -var-file={TYPE_WORKSPACE_NAME}.tfvars
 terraform apply -var-file={TYPE_WORKSPACE_NAME}.tfvars
 ```

@@ -1,15 +1,17 @@
-TERRAFORM_IMAGE=terraform:latest
+RUNNER_IMAGE=runner:latest
 
-.PHONY: terraform-image
-terraform-image:
+.PHONY: runner-image
+runner-image:
 	docker build \
-		-t ${TERRAFORM_IMAGE} \
-		-f ./terraform/Dockerfile \
-		./terraform
+		-t ${RUNNER_IMAGE} \
+		./runner
 
 .PHONY: check-terraform-format
 check-terraform-format:
-	docker run --rm ${TERRAFORM_IMAGE} check-format
+	docker run --rm \
+		-v ${PWD}:/work \
+		-w /work \
+		${RUNNER_IMAGE} check-format
 
 .PHONY: run-terraform
 run-terraform:
@@ -19,21 +21,21 @@ run-terraform:
 		-e AWS_CONTAINER_CREDENTIALS_RELATIVE_URI \
 		-e TERRAFORM_WORKSPACE \
 		-e TERRAFORM_SHOULD_APPLY \
-		${TERRAFORM_IMAGE} run
+		${RUNNER_IMAGE} run
 
 .PHONY: run-shellcheck
 run-shellcheck:
 	docker run --rm \
  		-v ${PWD}:/work \
  		-w /work \
- 		koalaman/shellcheck:v0.8.0 ./terraform/bin/entrypoint.sh
+ 		koalaman/shellcheck:v0.8.0 ./runner/entrypoint.sh
 
 .PHONY: run-hadolint
 run-hadolint:
 	docker run --rm \
 		-v ${PWD}:/work \
 		-w /work \
-		hadolint/hadolint:2.10.0 hadolint --no-color ./terraform/Dockerfile
+		hadolint/hadolint:2.10.0 hadolint --no-color ./runner/Dockerfile
 
 .PHONY: check-terraform-documents
 check-terraform-documents:
@@ -44,4 +46,7 @@ check-terraform-documents:
 
 .PHONY: validate-terraform-code
 validate-terraform-code:
-	docker run --rm ${TERRAFORM_IMAGE} validate
+	docker run --rm \
+		-v ${PWD}:/work \
+		-w /work \
+		${RUNNER_IMAGE} validate

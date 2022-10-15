@@ -8,6 +8,6 @@ RUN yum install -y unzip-6.0-43.amzn2 tar-1.26 gzip-1.5 \
   && unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip \
   && rm terraform_${TERRAFORM_VERSION}_linux_amd64.zip
 
-WORKDIR /work
+WORKDIR /
 COPY . .
-ENTRYPOINT [ "./bin/entrypoint.sh" ]
+ENTRYPOINT [ "/entrypoint.sh" ]
