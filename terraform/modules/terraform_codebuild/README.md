@@ -3,14 +3,14 @@
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | = 1.2.5 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | = 4.22.0 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | 1.3.2 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | 4.34.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | = 4.22.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 4.34.0 |
 
 ## Modules
 
@@ -20,14 +20,14 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [aws_codebuild_project.terraform_codebuild_project](https://registry.terraform.io/providers/hashicorp/aws/4.22.0/docs/resources/codebuild_project) | resource |
-| [aws_codebuild_webhook.example](https://registry.terraform.io/providers/hashicorp/aws/4.22.0/docs/resources/codebuild_webhook) | resource |
-| [aws_iam_policy.iam_editor](https://registry.terraform.io/providers/hashicorp/aws/4.22.0/docs/resources/iam_policy) | resource |
-| [aws_iam_role.code_build](https://registry.terraform.io/providers/hashicorp/aws/4.22.0/docs/resources/iam_role) | resource |
-| [aws_iam_role_policy_attachment.attaching_iam_editor_to_code_build](https://registry.terraform.io/providers/hashicorp/aws/4.22.0/docs/resources/iam_role_policy_attachment) | resource |
-| [aws_iam_role_policy_attachment.attaching_power_user_to_code_build](https://registry.terraform.io/providers/hashicorp/aws/4.22.0/docs/resources/iam_role_policy_attachment) | resource |
-| [aws_iam_policy_document.code_build](https://registry.terraform.io/providers/hashicorp/aws/4.22.0/docs/data-sources/iam_policy_document) | data source |
-| [aws_iam_policy_document.iam_editor](https://registry.terraform.io/providers/hashicorp/aws/4.22.0/docs/data-sources/iam_policy_document) | data source |
+| [aws_codebuild_project.terraform_codebuild_project](https://registry.terraform.io/providers/hashicorp/aws/4.34.0/docs/resources/codebuild_project) | resource |
+| [aws_codebuild_webhook.example](https://registry.terraform.io/providers/hashicorp/aws/4.34.0/docs/resources/codebuild_webhook) | resource |
+| [aws_iam_policy.iam_editor](https://registry.terraform.io/providers/hashicorp/aws/4.34.0/docs/resources/iam_policy) | resource |
+| [aws_iam_role.code_build](https://registry.terraform.io/providers/hashicorp/aws/4.34.0/docs/resources/iam_role) | resource |
+| [aws_iam_role_policy_attachment.attaching_iam_editor_to_code_build](https://registry.terraform.io/providers/hashicorp/aws/4.34.0/docs/resources/iam_role_policy_attachment) | resource |
+| [aws_iam_role_policy_attachment.attaching_power_user_to_code_build](https://registry.terraform.io/providers/hashicorp/aws/4.34.0/docs/resources/iam_role_policy_attachment) | resource |
+| [aws_iam_policy_document.code_build](https://registry.terraform.io/providers/hashicorp/aws/4.34.0/docs/data-sources/iam_policy_document) | data source |
+| [aws_iam_policy_document.iam_editor](https://registry.terraform.io/providers/hashicorp/aws/4.34.0/docs/data-sources/iam_policy_document) | data source |
 
 ## Inputs
 

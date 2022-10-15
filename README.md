@@ -3,7 +3,7 @@
 ## 前提条件
 
 - terraform
-    - 1.2.5
+    - バージョンは[terraformディレクトリ配下のREADME.md](./terraform/README.md)を参照すること
 - AWS CLI
     - 2.7.16以上
 

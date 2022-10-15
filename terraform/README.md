@@ -3,8 +3,8 @@
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | = 1.2.5 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | = 4.22.0 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | 1.3.2 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | 4.34.0 |
 
 ## Providers
 
@@ -16,7 +16,7 @@ No providers.
 |------|--------|---------|
 | <a name="module_applying_terraform_project"></a> [applying\_terraform\_project](#module\_applying\_terraform\_project) | ./modules/terraform_codebuild | n/a |
 | <a name="module_planning_terraform_project"></a> [planning\_terraform\_project](#module\_planning\_terraform\_project) | ./modules/terraform_codebuild | n/a |
-| <a name="module_vpc"></a> [vpc](#module\_vpc) | terraform-aws-modules/vpc/aws | 3.14.2 |
+| <a name="module_vpc"></a> [vpc](#module\_vpc) | terraform-aws-modules/vpc/aws | 3.16.1 |
 
 ## Resources
 
