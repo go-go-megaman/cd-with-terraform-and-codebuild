@@ -4,6 +4,7 @@ RUNNER_IMAGE=runner:latest
 runner-image:
 	docker build \
 		-t ${RUNNER_IMAGE} \
+		--platform linux/amd64 \
 		./runner
 
 .PHONY: check-format-of-terraform-code
@@ -40,9 +41,9 @@ run-hadolint:
 .PHONY: check-terraform-documents
 check-terraform-documents:
 	docker run --rm \
-		-v ${PWD}:/terraform-docs \
+		-v ${PWD}/terraform:/terraform-docs \
 		-u $(shell id -u) \
-		quay.io/terraform-docs/terraform-docs:0.16.0 markdown table --output-file README.md --output-check --recursive /terraform-docs/terraform
+		quay.io/terraform-docs/terraform-docs:0.16.0 markdown table --output-file README.md --output-check --recursive /terraform-docs
 
 .PHONY: validate-terraform-code
 validate-terraform-code:
