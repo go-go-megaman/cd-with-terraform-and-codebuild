@@ -118,10 +118,12 @@ run_tflint() {
         tflint --no-color --force "$dir" | tee -a "$tflint_temp_path"
       done
 
-      rm "$tflint_temp_path"
+      exit_status=0
       if [ -s "${tflint_temp_path}" ]; then
-        exit 1
+        exit_status=1
       fi
+      rm "$tflint_temp_path"
+      exit $exit_status
   )
 }
 
