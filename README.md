@@ -75,3 +75,9 @@ aws codebuild start-build --project-name planning-terraform-on-{TYPE_YOUR_OWN_WO
 # terraform applyを実行するCodeBuildプロジェクト
 aws codebuild start-build --project-name applying-terraform-on-{TYPE_YOUR_OWN_WORKSPACE_NAME}
 ```
+
+## 静的コード解析の実行
+
+```shell
+make run-all-checks
+```
