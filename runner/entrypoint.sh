@@ -114,7 +114,7 @@ run_tflint() {
       while read -r dir
       do
         echo "==========================================================================================="
-        echo "tflint is checking '$(cd "$(dirname "$dir")";pwd)'."
+        echo "tflint is checking $dir"
         tflint --no-color --force "$dir" | tee -a "$tflint_temp_path"
       done
 
