@@ -6,7 +6,7 @@ TERRAFORM_WORKSPACE=${TERRAFORM_WORKSPACE:-$(whoami)}
 TERRAFORM_SHOULD_APPLY=${TERRAFORM_SHOULD_APPLY:-false}
 
 current_dir=$(cd "$(dirname "$0")";pwd)
-terraform_dir="$current_dir/.."
+terraform_dir="$(pwd)"
 
 if "$DEBUG"; then
   set -x
