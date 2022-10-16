@@ -49,7 +49,7 @@ check-terraform-documents:
 .PHONY: validate-terraform-code
 validate-terraform-code:
 	docker run --rm \
-		-v ${PWD}:/work \
+		-v ${PWD}/terraform:/work \
 		-w /work \
 		${RUNNER_IMAGE} validate
 
