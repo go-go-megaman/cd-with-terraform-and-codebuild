@@ -103,6 +103,28 @@ run() {
   )
 }
 
+run_tflint() {
+  (
+    tflint --no-color --init
+    tflint_temp_path="${terraform_dir}/temp.txt"
+
+    find . -type f -name '*.tf' -not -path "./.terraform/*" -print0 |
+      xargs -0 dirname |
+      sort -u |
+      while read -r dir
+      do
+        echo "==========================================================================================="
+        echo "tflint is checking '$(cd "$(dirname "$dir")";pwd)'."
+        tflint --no-color --force "$dir" | tee -a "$tflint_temp_path"
+      done
+
+      rm "$tflint_temp_path"
+      if [ -s "${tflint_temp_path}" ]; then
+        exit 1
+      fi
+  )
+}
+
 main() {
   if [ "$#" = 0 ]; then
     echo "Please specify any command."
@@ -115,6 +137,8 @@ main() {
     terraform_wrapper fmt -check -recursive -diff
   elif [ "$1" = "validate" ]; then
     terraform_wrapper validate
+  elif [ "$1" = "run-tflint" ]; then
+    run_tflint
   else
     echo "Please specify correct command."
     exit 1
