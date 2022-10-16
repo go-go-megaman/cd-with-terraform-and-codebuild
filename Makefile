@@ -16,8 +16,9 @@ check-format-of-terraform-code:
 
 .PHONY: run-terraform
 run-terraform:
-	docker run \
-		--rm \
+	docker run --rm \
+		-v ${PWD}/terraform:/work \
+		-w /work \
 		-e AWS_DEFAULT_REGION \
 		-e AWS_CONTAINER_CREDENTIALS_RELATIVE_URI \
 		-e TERRAFORM_WORKSPACE \
