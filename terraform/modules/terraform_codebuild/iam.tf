@@ -19,9 +19,13 @@ resource "aws_iam_role" "code_build" {
 
 data "aws_iam_policy_document" "iam_editor" {
   statement {
+    #CodeBuild is used to create any AWS resources which contain resources related to IAM.
+    #tfsec:ignore:aws-iam-no-policy-wildcards
     actions = [
       "iam:*"
     ]
+    #CodeBuild is used to create any AWS resources which contain resources related to IAM.
+    #tfsec:ignore:aws-iam-no-policy-wildcards
     resources = [
       "*"
     ]
