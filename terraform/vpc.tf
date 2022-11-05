@@ -1,3 +1,6 @@
+#There is a bug that detect incorrect error with tfsec v1.28.1
+#https://github.com/aquasecurity/tfsec/issues/1941
+#tfsec:ignore:aws-ec2-require-vpc-flow-logs-for-all-vpcs
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
   version = "3.16.1"
@@ -17,4 +20,59 @@ module "vpc" {
   default_security_group_egress  = []
 
   map_public_ip_on_launch = false
+
+  enable_flow_log                  = true
+  flow_log_destination_type        = "cloud-watch-logs"
+  flow_log_destination_arn         = aws_cloudwatch_log_group.flow_log.arn
+  flow_log_cloudwatch_iam_role_arn = aws_iam_role.vpc_flow_log_cloudwatch.arn
+}
+
+resource "aws_kms_key" "flow_log" {
+  enable_key_rotation = true
+}
+
+resource "aws_cloudwatch_log_group" "flow_log" {
+  kms_key_id = aws_kms_key.flow_log.id
+}
+
+resource "aws_iam_role" "vpc_flow_log_cloudwatch" {
+  assume_role_policy = data.aws_iam_policy_document.flow_log_cloudwatch_assume_role.json
+}
+
+data "aws_iam_policy_document" "flow_log_cloudwatch_assume_role" {
+  statement {
+    principals {
+      type = "Service"
+      identifiers = [
+        "vpc-flow-logs.amazonaws.com"
+      ]
+    }
+    actions = [
+      "sts:AssumeRole"
+    ]
+  }
+}
+
+resource "aws_iam_role_policy_attachment" "vpc_flow_log_cloudwatch" {
+  role       = aws_iam_role.vpc_flow_log_cloudwatch.name
+  policy_arn = aws_iam_policy.vpc_flow_log_cloudwatch.arn
+}
+
+resource "aws_iam_policy" "vpc_flow_log_cloudwatch" {
+  policy = data.aws_iam_policy_document.vpc_flow_log_cloudwatch.json
+}
+
+data "aws_iam_policy_document" "vpc_flow_log_cloudwatch" {
+  statement {
+    actions = [
+      "logs:CreateLogGroup",
+      "logs:CreateLogStream",
+      "logs:PutLogEvents",
+      "logs:DescribeLogGroups",
+      "logs:DescribeLogStreams",
+    ]
+    resources = [
+      aws_cloudwatch_log_group.flow_log.arn
+    ]
+  }
 }
