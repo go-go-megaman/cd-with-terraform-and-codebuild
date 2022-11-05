@@ -3,6 +3,6 @@ version: 0.2
 phases:
   build:
     commands:
-      - make terraform-image
+      - make runner-image
       - make run-all-checks
       - make run-terraform
