@@ -70,5 +70,12 @@ run-tflint:
 		-w /work \
 		${RUNNER_IMAGE} run-tflint
 
+.PHONY: run-tfsec
+run-tfsec:
+	docker run --rm \
+		-v ${PWD}/terraform:/work \
+		-w /work \
+		${RUNNER_IMAGE} run-tfsec
+
 .PHONY: run-all-checks
-run-all-checks: run-shellcheck run-hadolint check-terraform-documents check-format-of-terraform-code validate-terraform-code run-tflint
+run-all-checks: run-shellcheck run-hadolint check-terraform-documents check-format-of-terraform-code validate-terraform-code run-tflint run-tfsec

@@ -6,6 +6,8 @@
     - バージョンは[terraformディレクトリ配下のREADME.md](./terraform/README.md)を参照すること
 - tflint
     - 0.41.0
+- tfsec
+    - 1.28.1
 - AWS CLI
     - 2.7.16以上
 

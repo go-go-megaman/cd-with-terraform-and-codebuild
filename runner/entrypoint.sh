@@ -119,6 +119,10 @@ run_tflint() {
   )
 }
 
+run_tfsec() {
+  tfsec --tfvars-file "$(fetch_tfvars_file_name)" --no-color "${terraform_dir}"
+}
+
 main() {
   if [ "$#" = 0 ]; then
     echo "Please specify any command."
@@ -138,6 +142,8 @@ main() {
     terraform_wrapper validate
   elif [ "$1" = "run-tflint" ]; then
     run_tflint
+  elif [ "$1" = "run-tfsec" ]; then
+    run_tfsec
   else
     echo "Please specify correct command."
     exit 1
