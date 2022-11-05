@@ -4,5 +4,6 @@ phases:
   build:
     commands:
       - make runner-image
+      - make init-terraform
       - make run-all-checks
       - make run-terraform

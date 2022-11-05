@@ -83,24 +83,16 @@ new_terraform_workspace() {
 }
 
 init() {
-  make_bucket
-  create_table
-
-  rm -Rf "$terraform_dir"/.terraform
   terraform_wrapper init -backend-config="bucket=$(fetch_backend_bucket_name)"
-  new_terraform_workspace
   terraform_wrapper workspace select "$TERRAFORM_WORKSPACE"
 }
 
 run() {
-  init
-  (
-    lock_timeout_seconds="3600s"
-    if $TERRAFORM_SHOULD_APPLY; then
-      terraform_with_tfvars apply -lock-timeout=$lock_timeout_seconds -auto-approve
-    fi
-    terraform_with_tfvars plan -lock-timeout=$lock_timeout_seconds
-  )
+  lock_timeout_seconds="3600s"
+  if $TERRAFORM_SHOULD_APPLY; then
+    terraform_with_tfvars apply -lock-timeout=$lock_timeout_seconds -auto-approve
+  fi
+  terraform_with_tfvars plan -lock-timeout=$lock_timeout_seconds
 }
 
 run_tflint() {
@@ -131,6 +123,11 @@ main() {
   if [ "$#" = 0 ]; then
     echo "Please specify any command."
     exit 1
+  elif [ "$1" = "prepare-backend" ]; then
+    make_bucket
+    create_table
+  elif [ "$1" = "prepare-workspace" ]; then
+    new_terraform_workspace
   elif [ "$1" = "init" ]; then
     init
   elif [ "$1" = "run" ]; then

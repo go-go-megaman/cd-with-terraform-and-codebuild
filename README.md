@@ -27,6 +27,8 @@ export TERRAFORM_WORKSPACE={TYPE_YOUR_OWN_WORKSPACE_NAME}
 
 ```shell
 cd terraform
+../runner/entrypoint.sh prepare-backend
+../runner/entrypoint.sh prepare-workspace
 ../runner/entrypoint.sh init
 ```
 
@@ -45,6 +47,8 @@ terraform apply -var-file=sandbox.tfvars
 ```shell
 export TERRAFORM_WORKSPACE={TYPE_WORKSPACE_NAME}
 cd terraform
+../runner/entrypoint.sh prepare-backend
+../runner/entrypoint.sh prepare-workspace
 ../runner/entrypoint.sh init
 terraform plan -var-file={TYPE_WORKSPACE_NAME}.tfvars
 terraform apply -var-file={TYPE_WORKSPACE_NAME}.tfvars
@@ -78,6 +82,16 @@ aws codebuild start-build --project-name applying-terraform-on-{TYPE_YOUR_OWN_WO
 
 ## 静的コード解析の実行
 
+- terraformディレクトリにて次のコマンドを実行する。
+
 ```shell
+cd terraform
+../runner/entrypoint.sh init
+```
+
+- リポジトリのルートへ移動した後、静的コード解析を行うコマンドを実行する。
+
+```shell
+cd ..
 make run-all-checks
 ```
